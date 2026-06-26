@@ -178,9 +178,3 @@ ros2-consensus-formation-control
 * Leader election
 * RViz visualization
 * Performance analysis tools
-
----
-
-# License
-
-This project is released under the MIT License.
