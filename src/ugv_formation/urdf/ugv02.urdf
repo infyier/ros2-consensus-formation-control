@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<robot name="ugv02">
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.047" rpy="0 0 0" />
+      <geometry>
+        <box size="0.252 0.230 0.094" />
+      </geometry>
+      <material name="ugv_grey">
+        <color rgba="0.25 0.25 0.25 1.0" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.047" rpy="0 0 0" />
+      <geometry>
+        <box size="0.252 0.230 0.094" />
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0.047" rpy="0 0 0" />
+      <mass value="3.402" />
+      <inertia
+                ixx="0.01750"
+                ixy="0.0"
+                ixz="0.0"
+                iyy="0.02050"
+                iyz="0.0"
+                izz="0.03299"
+            />
+    </inertial>
+  </link>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/DarkGrey</material>
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <kp>500000.0</kp>
+    <kd>50.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>1.0</maxVel>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="ugv02_planar_move" filename="libgazebo_ros_planar_move.so">
+      <update_rate>50</update_rate>
+      <publish_rate>50</publish_rate>
+      <robot_base_frame>base_link</robot_base_frame>
+      <command_topic>cmd_vel</command_topic>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <publish_odometry_tf>true</publish_odometry_tf>
+    </plugin>
+  </gazebo>
+</robot>
